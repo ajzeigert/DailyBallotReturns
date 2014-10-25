@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+  <div id="chartContainer">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.1.0.min.js"></script>
+      <!-- doc id: 1AKH7y6NBWga3fxJeolm8WUE5kUloVbfKhqaCHk45RyA -->
+      <!-- sheet id: op8w4if -->
+
+    <script type="text/javascript">
+      function mapEntries(json, realrowlength, skip){
+      if (!skip) skip = 0;
+      var dataframe = new Array();
+
+      var row = new Array();
+      for (var i=0; i < json.feed.entry.length; i++) {
+
+        var entry = json.feed.entry[i];
+        if (entry.gs$cell.col == '1') {
+          if (row != null) {
+            if ((!realrowlength || row.length === realrowlength) && (skip  === 0)){
+               dataframe.push(row);
+            } else {
+               if (skip > 0) skip--;
+            }
+          }
+
+          var row = new Array();
+        }
+        row.push(entry.content.$t);
+      } 
+      dataframe.push(row);
+      return dataframe;
+      }
+      
+      //Converts raw JSONP into array
+      function render(data) {
+        var dataframe = mapEntries(data,null,2);
+        
+        //Creates an array called "elex" see https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.plot#line for requirements also http://eloquentjavascript.net/05_higher_order.html#p_A2VaNOTR7R for info on constructing arrays
+        var elex = {}
+        
+       /* elex.name = "Election History"
+        elex.children = new Array();
+        for (i=0;i<dataframe.length;i++){
+          var item = {}
+          item.name = dataframe[i][0];
+          item.day = Number(dataframe[i][1]);
+          item.returns = Number(dataframe[i][2]);
+          elex.children.push(item);
+        } */ //Broken
+        
+        console.log(dataframe);
+        console.log(elex);
+      //Initiates svg and dumps it into the specified div
+      var svg = dimple.newSvg("#chartContainer", 590, 400);
+      
+      // Builds the chart using the data provided
+      var myChart = new dimple.chart(svg, elex);
+      myChart.setBounds(60, 30, 505, 305);
+      var x = myChart.addCategoryAxis("x", "Month");
+      x.addOrderRule("Date");
+      myChart.addMeasureAxis("y", "Unit Sales");
+      myChart.addSeries("Channel", dimple.plot.line);
+      myChart.addLegend(60, 10, 500, 20, "right");
+      myChart.draw();
+      }
+    </script>
+    <script src="https://spreadsheets.google.com/feeds/cells/1AKH7y6NBWga3fxJeolm8WUE5kUloVbfKhqaCHk45RyA/op8w4if/public/values?alt=json-in-script&callback=render"></script> 
+  </div>
+  <div>
+    <iframe width="233px" height="150px" src="https://docs.google.com/spreadsheets/d/1AKH7y6NBWga3fxJeolm8WUE5kUloVbfKhqaCHk45RyA/pubhtml?gid=0"></iframe>
+  </div>
+</body>
+</html>
