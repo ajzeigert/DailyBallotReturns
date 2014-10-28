@@ -2,14 +2,12 @@
 <html>
 <head></head>
 <body>
-<h2>Daily ballot return percentage in Oregon</h2>
-  <div id="chartContainer">
+  <div id="chartContainer" style="height: 100%">
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="http://dimplejs.org/dist/dimple.v2.1.0.min.js"></script>
       <!-- doc id: 1AKH7y6NBWga3fxJeolm8WUE5kUloVbfKhqaCHk45RyA -->
       <!-- sheet id: op8w4if -->
-
-    <script type="text/javascript">
+      <script type="text/javascript">
       var elex = [
           /*{ "Election":"May 2010", "Days until election":"8", "Return percentage":"7%" },
           { "Election":"May 2010", "Days until election":"7", "Return percentage":"10%" },
@@ -60,10 +58,10 @@
           { "Election":"November 2014", "Days until election":"7", "Return percentage":"15.6%" },
           { "Election":"November 2014", "Days until election":"6", "Return percentage":"20.2%" }
       ];
-      var svg = dimple.newSvg("#chartContainer", 300, 300);
+      var svg = dimple.newSvg("#chartContainer", "100%", "90%");
       // Builds the chart using the data provided
       var myChart = new dimple.chart(svg, elex);
-      myChart.setBounds(60, 30, 250, 220);
+      myChart.setMargins("40px", "30px", "30px", "35px");
       var myAxis = myChart.addCategoryAxis("x", "Days until election");
       myChart.defaultColors = [
         new dimple.color("#f1ce91"),
@@ -72,8 +70,11 @@
       myAxis.addOrderRule("Days until election", true);
       myChart.addMeasureAxis("y", "Return percentage");
       myChart.addSeries("Election", dimple.plot.line);
-      myChart.addLegend(80, 10, 300, 60, "left");
+      myChart.addLegend("50px", "25px", "100px", "70px");
       myChart.draw();
+      window.onresize = function () {
+        myChart.draw(0, true);
+      };
     </script>
   </div>
 <!--<iframe width="233px" height="150px" src="https://docs.google.com/spreadsheets/d/1AKH7y6NBWga3fxJeolm8WUE5kUloVbfKhqaCHk45RyA/pubhtml?gid=0"></iframe> -->
