@@ -11,7 +11,7 @@
 
     <script type="text/javascript">
       var elex = [
-          { "Election":"May 2010", "Days until election":"8", "Return percentage":"7%" },
+          /*{ "Election":"May 2010", "Days until election":"8", "Return percentage":"7%" },
           { "Election":"May 2010", "Days until election":"7", "Return percentage":"10%" },
           { "Election":"May 2010", "Days until election":"6", "Return percentage":"12%" },
           { "Election":"May 2010", "Days until election":"5", "Return percentage":"15%" },
@@ -19,7 +19,7 @@
           { "Election":"May 2010", "Days until election":"3", "Return percentage":"19%" },
           { "Election":"May 2010", "Days until election":"2", "Return percentage":"23%" },
           { "Election":"May 2010", "Days until election":"1", "Return percentage":"28%" },
-          { "Election":"May 2010", "Days until election":"0", "Return percentage":"41%" },
+          { "Election":"May 2010", "Days until election":"0", "Return percentage":"41%" },*/
           { "Election":"November 2010", "Days until election":"8", "Return percentage":"9%" },
           { "Election":"November 2010", "Days until election":"7", "Return percentage":"14%" },
           { "Election":"November 2010", "Days until election":"6", "Return percentage":"18%" },
@@ -29,7 +29,7 @@
           { "Election":"November 2010", "Days until election":"2", "Return percentage":"42%" },
           { "Election":"November 2010", "Days until election":"1", "Return percentage":"51%" },
           { "Election":"November 2010", "Days until election":"0", "Return percentage":"70%" },
-          { "Election":"May 2012", "Days until election":"8", "Return percentage":"8%" },
+          /*{ "Election":"May 2012", "Days until election":"8", "Return percentage":"8%" },
           { "Election":"May 2012", "Days until election":"7", "Return percentage":"10%" },
           { "Election":"May 2012", "Days until election":"6", "Return percentage":"13%" },
           { "Election":"May 2012", "Days until election":"5", "Return percentage":"16%" },
@@ -37,7 +37,7 @@
           { "Election":"May 2012", "Days until election":"3", "Return percentage":"19%" },
           { "Election":"May 2012", "Days until election":"2", "Return percentage":"22%" },
           { "Election":"May 2012", "Days until election":"1", "Return percentage":"27%" },
-          { "Election":"May 2012", "Days until election":"0", "Return percentage":"38%" },
+          { "Election":"May 2012", "Days until election":"0", "Return percentage":"38%" },*/
           { "Election":"November 2012", "Days until election":"8", "Return percentage":"14.9%" },
           { "Election":"November 2012", "Days until election":"7", "Return percentage":"19.7%" },
           { "Election":"November 2012", "Days until election":"6", "Return percentage":"19.7%" },
@@ -47,7 +47,7 @@
           { "Election":"November 2012", "Days until election":"2", "Return percentage":"50.6%" },
           { "Election":"November 2012", "Days until election":"1", "Return percentage":"61.3%" },
           { "Election":"November 2012", "Days until election":"0", "Return percentage":"81%" },
-          { "Election":"May 2014", "Days until election":"8", "Return percentage":"8.3%" },
+          /*{ "Election":"May 2014", "Days until election":"8", "Return percentage":"8.3%" },
           { "Election":"May 2014", "Days until election":"7", "Return percentage":"10.2%" },
           { "Election":"May 2014", "Days until election":"6", "Return percentage":"12.6%" },
           { "Election":"May 2014", "Days until election":"5", "Return percentage":"14.6%" },
@@ -55,31 +55,27 @@
           { "Election":"May 2014", "Days until election":"3", "Return percentage":"17.9%" },
           { "Election":"May 2014", "Days until election":"2", "Return percentage":"20.3%" },
           { "Election":"May 2014", "Days until election":"1", "Return percentage":"24.9%" },
-          { "Election":"May 2014", "Days until election":"0", "Return percentage":"35.5%" },
+          { "Election":"May 2014", "Days until election":"0", "Return percentage":"35.5%" },*/
           { "Election":"November 2014", "Days until election":"8", "Return percentage":"12.4%" },
-          { "Election":"November 2014", "Days until election":"7", "Return percentage":"15.6%" }
+          { "Election":"November 2014", "Days until election":"7", "Return percentage":"15.6%" },
+          { "Election":"November 2014", "Days until election":"6", "Return percentage":"20.2%" }
       ];
-      var svg = dimple.newSvg("#chartContainer", 590, 400);
+      var svg = dimple.newSvg("#chartContainer", 300, 300);
       // Builds the chart using the data provided
       var myChart = new dimple.chart(svg, elex);
+      myChart.setBounds(60, 30, 250, 220);
       var myAxis = myChart.addCategoryAxis("x", "Days until election");
       myChart.defaultColors = [
-        new dimple.color("#c58083"),
         new dimple.color("#f1ce91"),
         new dimple.color("#b4c1c9"),
-        new dimple.color("#c7b4a7"),
-        new dimple.color("#d1d2d4"),
-        new dimple.color("#d3181f"),
-        new dimple.color("#95b58c")];
+        new dimple.color("#d3181f")];
       myAxis.addOrderRule("Days until election", true);
       myChart.addMeasureAxis("y", "Return percentage");
       myChart.addSeries("Election", dimple.plot.line);
-      myChart.addLegend(60, 10, 500, 20, "right");
+      myChart.addLegend(80, 10, 300, 60, "left");
       myChart.draw();
     </script>
   </div>
-  <div>
-  <iframe width="233px" height="150px" src="https://docs.google.com/spreadsheets/d/1AKH7y6NBWga3fxJeolm8WUE5kUloVbfKhqaCHk45RyA/pubhtml?gid=0"></iframe>
-  </div>
-</body>
+  <!--<iframe width="233px" height="150px" src="https://docs.google.com/spreadsheets/d/1AKH7y6NBWga3fxJeolm8WUE5kUloVbfKhqaCHk45RyA/pubhtml?gid=0"></iframe> -->
+  </body>
 </html>
