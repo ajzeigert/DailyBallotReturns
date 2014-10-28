@@ -61,7 +61,7 @@
       var svg = dimple.newSvg("#chartContainer", "100%", "90%");
       // Builds the chart using the data provided
       var myChart = new dimple.chart(svg, elex);
-      myChart.setMargins("40px", "30px", "30px", "35px");
+      myChart.setMargins("40px", "5px", "10px", "35px");
       var myAxis = myChart.addCategoryAxis("x", "Days until election");
       myChart.defaultColors = [
         new dimple.color("#f1ce91"),
@@ -70,13 +70,12 @@
       myAxis.addOrderRule("Days until election", true);
       myChart.addMeasureAxis("y", "Return percentage");
       myChart.addSeries("Election", dimple.plot.line);
-      myChart.addLegend("50px", "25px", "100px", "70px");
+      myChart.addLegend("50px", "5px", "100px", "70px");
       myChart.draw();
       window.onresize = function () {
         myChart.draw(0, true);
       };
     </script>
   </div>
-<!--<iframe width="233px" height="150px" src="https://docs.google.com/spreadsheets/d/1AKH7y6NBWga3fxJeolm8WUE5kUloVbfKhqaCHk45RyA/pubhtml?gid=0"></iframe> -->
-  </body>
+</body>
 </html>
